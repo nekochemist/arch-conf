@@ -1,0 +1,93 @@
+* {
+    font-family: IosevkaTerm NFP ExtraBold,FiraCode Nerd Font , CodeNewRoman Nerd Font , FontAwesome, Roboto, Arial, sans-serif;
+
+    font-size: 15px;
+}
+
+window#waybar {
+    background-color: rgba(26, 27, 38, 0);
+    /*transition-property: background-color ;*/
+    transition-duration: 10s;
+
+}
+box.modules-right {
+    padding: 0px 4px 0px 0px; 
+    margin: 4px 4px 2px 0px;
+    color: #C1D6D6;
+    border: 2px solid #C1D6D6;
+    border-radius: 5px;
+
+    background-color: #07090B;
+    
+}
+#clock#calendar,
+
+hyprland#window {
+    
+}
+#clock,
+#custom-logout {
+    padding: 0px 4px 0px 10px
+}
+
+
+
+#pulseaudio {
+    min-width: 120px;
+    padding: 0px 0px 0px 0px;
+}
+
+/* box.modules-left {
+    margin: 4px 10px 2px 4px;
+    padding: 0px 5px 0px 4px;
+    border-radius: 5px;
+    border: 2px solid #C1D6D6;
+    color: #C1D6D6;
+   background-color: #07090B;
+}
+*/
+#tray {
+    margin: 0px;
+    padding: 0px 10px 0px 10px;
+    /*border: 1px solid #c0caf5;*/
+
+}
+
+
+
+label.modules-right {
+    padding: 0px;
+    margin: 0px;
+}
+
+#workspaces button {
+    background-color: #07090B;
+    color:  #C1D6D6;
+    border-radius: 5px;
+    padding: 0px 10px 0px 10px;
+    min-height: 8px;
+    margin: 4px 2px 2px 2px;
+    border: 2px solid rgba(0,0,0, 0);
+}
+
+#workspaces button.focused {
+    border: 2px solid #C1D6D6;
+    background-color : #07090B;
+
+}
+#workspaces button:hover {
+    border: 2px solid #C1D6D6;
+    background-color : #07090B;
+
+}
+#workspaces button.active
+{
+    border: 2px solid #C1D6D6;
+    color: #C1D6D6;
+}
+
+#workspaces button.urgent {
+    background-color: #07090B;
+    border: 2px solid #A1F7C6;
+}
+

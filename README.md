@@ -1,1 +1,1 @@
-My Arch Linux .conf files
+my .conf files for arch 
