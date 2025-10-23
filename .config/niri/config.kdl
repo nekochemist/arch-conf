@@ -58,7 +58,7 @@ input {
 }
 
 layout {
-    gaps 10
+    gaps 5
 
     center-focused-column "never"
      default-column-display "normal"
@@ -89,11 +89,12 @@ layout {
     focus-ring {
         // off
 
-        width 4
+        width 2
         // - CSS named colors: "red"
         // - RGB hex: "#rgb", "#rgba", "#rrggbb", "#rrggbbaa"
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
-        active-color "#C1D6D6"
+       // active-color "#EEF7FD"
+       active-color "#C1D6D6"
 // foreground #C1D6D6
  //background #07090B
         inactive-color "#000000"
@@ -296,6 +297,9 @@ binds {
     Mod+D  { spawn "fuzzel"; }
     Super+W { spawn "kitty" "--class" "clipse" "-e" "clipse"; }
     Mod+Alt+L  { spawn "gtklock"; }
+    Mod+Shift+P{spawn "shutdown" "now";}
+    Mod+Shift+Alt+P{spawn "shutdown" "-" "c";}
+    Alt+C{spawn "hyprpicker" "-a";}
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
@@ -413,6 +417,10 @@ binds {
     // You can set a cooldown on any bind, but it's most useful for the wheel.
     Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
     Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+
+    //Mod+Shift+WheelScrollDown      cooldown-ms=150 { focus-column-left; }
+    //Mod+Shift+WheelScrollUp        cooldown-ms=150 { focus-column-right; }
+
     Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
     Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
 
@@ -551,5 +559,5 @@ binds {
 
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
-    Mod+Shift+P { power-off-monitors; }
+    //Mod+Shift+P { power-off-monitors; }
 }
