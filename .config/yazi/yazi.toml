@@ -1,0 +1,7 @@
+[mgr]
+linemode = "size"
+mouse_events = ["click", "scroll", "touch", "move", "drag"]
+[opener]
+edit = [
+	{ run = "neovide %s", block = true, for = "unix" },
+]
