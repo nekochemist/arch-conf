@@ -33,7 +33,7 @@ input {
          scroll-method "on-button-down"
     }
     warp-mouse-to-focus
-    focus-follows-mouse max-scroll-amount="50%"
+    focus-follows-mouse max-scroll-amount="0%"
 
     trackpoint {
         // off
@@ -58,13 +58,14 @@ output "DP-1" {
 }
 
 layout {
-    gaps 5
+    gaps 10
     background-color "transparent"
     center-focused-column "never"
      default-column-display "normal"
     preset-column-widths {
+        proportion 0.33333
         proportion 0.5
-        proportion 1.0
+        proportion 0.66666
     }
 
        preset-window-heights {
@@ -72,7 +73,7 @@ layout {
          proportion 1.0
        }
 
-    default-column-width { proportion 0.5; }
+    default-column-width { proportion 1.0; }
 
     // By default focus ring and border are rendered as a solid background rectangle
     // behind windows. That is, they will show up through semitransparent windows.
@@ -87,17 +88,17 @@ layout {
 
     // You can change how the focus ring looks.
     focus-ring {
-        // off
+         off
 
         width 2
         // - CSS named colors: "red"
         // - RGB hex: "#rgb", "#rgba", "#rrggbb", "#rrggbbaa"
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
        // active-color "#EEF7FD"
-       active-color "#EEF7FD"
+       //active-color "#EEF7FD"
 // foreground #C1D6D6
  //background #07090B
-        inactive-color  "#5C6871"
+     //   inactive-color  "#5C6871"
         // Changing the color space is also supported, check the wiki for more info.
         //
         // active-gradient from="#80c8ff" to="#c7ff7f" angle=45
@@ -111,8 +112,10 @@ layout {
 
     // You can also add a border. It's similar to the focus ring, but always visible.
     border {
-        off
-        urgent-color "#9b0000"
+        //off
+        width 4
+        active-color "#25c39f"
+        inactive-color "#c1d6d6"
     }
 
     shadow {
@@ -126,14 +129,18 @@ layout {
     // Top and bottom struts will simply add outer gaps in addition to the area occupied by
     // layer-shell panels and regular gaps.
     struts {
-         left -1
-         right -1
+         left 0
+         right 0
          top 0
          bottom 0
     }
-    tab-indicator{
-   //   off
-    }
+    tab-indicator {
+      //off
+        active-color "#f6db8b"
+        inactive-color "#8fd2f7"
+        urgent-color "#eef7fd"
+        width  5   
+      }
     insert-hint {
         //off
         color "#EEF7FD"
@@ -163,8 +170,9 @@ cursor {
 
 spawn-at-startup "niri-screen-time" "-daemon"
 spawn-at-startup "swayosd-server"
+spawn-at-startup "walker" "--gapplication-service"
 
-spawn-at-startup "hyprwave"
+//spawn-at-startup "hyprwave"
 spawn-at-startup "swaync"
 spawn-at-startup "clipse" "-listen"
 spawn-at-startup "swaybg" "-i" "imgs/bafkreiax76e2p3xqoikrkbppjl4mipnaamqrgxkcfgwqtrsa3glksq644m"
@@ -187,7 +195,7 @@ prefer-no-csd
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
 // The path is formatted with strftime(3) to give you the screenshot date and time.
-screenshot-path "~/imgs/screenshots/screenshot from %Y-%m-%d %H-%M-%S.png"
+screenshot-path "~/imgs/screenshots/screenshot-from-%Y-%m-%d %H-%M-%S.png"
 //spawn-at-startup "throne"
 //spawn-at-startup "kitty" "sudo" "sing-box" "run" "-c" "/home/unconfer/.sing-box/sing-box-03.json"
 
@@ -203,6 +211,52 @@ animations {
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
      slowdown 1.0
+  workspace-switch {
+       spring damping-ratio=0.8 stiffness=1000 epsilon=0.00001
+    }
+    window-open {
+      duration-ms 200
+    curve "ease-out-quad"
+
+    }
+ window-close {
+    duration-ms 200
+
+    curve "ease-out-quad"
+  }
+  horizontal-view-movement {
+    spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+  }
+
+  window-movement {
+    spring damping-ratio=0.8 stiffness=800 epsilon=0.0001
+  }
+
+  window-resize {
+    spring damping-ratio=0.8 stiffness=800 epsilon=0.0001
+  }
+
+  config-notification-open-close {
+    spring damping-ratio=0.6 stiffness=1000 epsilon=0.001
+  }
+
+  exit-confirmation-open-close {
+    spring damping-ratio=0.6 stiffness=500 epsilon=0.01
+  }
+
+  screenshot-ui-open {
+    duration-ms 200
+    curve "ease-out-quad"
+  }
+
+  overview-open-close {
+    spring damping-ratio=0.8 stiffness=800 epsilon=0.0001
+  }
+
+  recent-windows-close {
+    spring damping-ratio=1.0 stiffness=800 epsilon=0.001
+  }
+
 }
 
 // Window rules let you adjust behavior for individual windows.
@@ -225,12 +279,12 @@ window-rule {
   match app-id="clipse"
 //  match is-floating=true
   open-maximized true
- //open-floating true
+ open-floating true
   tiled-state true
 }
 window-rule {
-    open-maximized false
-     geometry-corner-radius 0
+ //   open-maximized false
+     geometry-corner-radius 10
      tiled-state true
      clip-to-geometry  true
 
@@ -263,12 +317,19 @@ window-rule {
     }
 
 }
+window-rule {
+  match title="sudo"
+
+  border {
+            active-color "#ff0100"
+  }
+}
 
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
 window-rule {
-    geometry-corner-radius 0
-    clip-to-geometry false
+    geometry-corner-radius 10
+    clip-to-geometry true
 }
 layer-rule {
     match namespace="waybar"
@@ -329,12 +390,14 @@ binds {
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
-    Super+F{ toggle-window-floating;}
+    Super+F{ maximize-column;}
     Mod+M { spawn "hyprwave-toggle" "visibility"; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Q { spawn "kitty"; }
-    Mod+D  { spawn "fuzzel"; }
+    //Mod+D  { spawn "fuzzel"; }
+    
+    Mod+D  { spawn "walker"; }
     Mod+Grave repeat=false { toggle-overview; }
     Mod+Shift+Grave  repeat=false { spawn "kitty" "--class" "-e" "btop" ; }
     Super+W { spawn "kitty" "--class" "clipse" "-e" "clipse"; }
@@ -347,20 +410,30 @@ binds {
     Mod+Ctrl+Return { spawn "reboot"; }
     Mod+Shift+P{spawn "shutdown" "-c";}
     Alt+I  repeat=false {spawn "hyprpicker" "-a";}
+ //   Mod+Alt+C {;}
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
     // For example, this is a standard bind to toggle the screen reader (orca).
-    Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
+ //   Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // 
     // The allow-when-locked=true property makes them work even when the session is locked.
     // Using spawn-sh allows to pass multiple arguments together with the command.
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
-    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+//    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
+// XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+ //   XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    //XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+
+  //  XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+    
+    XF86AudioRaiseVolume { spawn "swayosd-client" "--output-volume" "5" "--max-volume" "200";}
+    
+    XF86AudioMute  allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
+    
+    XF86AudioLowerVolume { spawn "swayosd-client" "--output-volume" "-5" "--max-volume" "200";}
+    Mod+Y     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
     // Example brightness key mappings for brightnessctl.
     // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
@@ -375,7 +448,7 @@ binds {
 
     //Mod+Escape repeat=false { toggle-overview; }
 
-    Mod+C repeat=false { close-window; }
+    Mod+Shift+C repeat=false { close-window; }
 
     Mod+Left  { focus-column-left; }
     Mod+Down  { focus-window-down; }
@@ -563,7 +636,7 @@ binds {
     // Mod+R { switch-preset-column-width-back; }
     Mod+Shift+R  repeat=false { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
-    Mod+Shift+A  repeat=false { fullscreen-window; }
+    Mod+Shift+F  repeat=false { fullscreen-window; }
 
     // Expand the focused column to space not taken up by other fully visible columns.
     // Makes the column "fill the rest of the space".
@@ -572,7 +645,7 @@ binds {
     //Mod+M { center-column; }
 
     // Center all fully visible columns on screen.
-    Mod+Ctrl+C { center-visible-columns; }
+    Mod+C { center-column; }
 
     // Finer width adjustments.
     // This command can also:
@@ -589,8 +662,9 @@ binds {
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
 
+      Mod+V       { toggle-window-floating; }
     // Move the focused window between the floating and the tiling layout.
-    Mod+V       {spawn  "pavucontrol"; }
+    //Mod+V       {spawn  "pavucontrol"; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
     // Toggle tabbed column display mode.
