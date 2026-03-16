@@ -32,6 +32,7 @@ cava
 clipse
 clock-tui
 cloudflared
+cmatrix
 cmus
 cool-retro-term
 cowsay
@@ -72,6 +73,7 @@ floorp-bin
 fluffychat-bin
 foliate
 foot
+fractal
 freerdp
 fsel-git
 fuzzel
@@ -139,6 +141,7 @@ gvfs-nfs
 gvfs-onedrive
 gvfs-smb
 gvfs-wsdd
+hdparm
 helix
 helm-bin
 helvum
@@ -146,6 +149,7 @@ hylauncher-bin
 hyprland
 hyprlock
 hyprpicker
+hyprpwcenter
 hyprshot
 hyprwave
 hytale-f2p-git
@@ -202,6 +206,7 @@ lla
 lmms
 loupe
 lsd
+lshw
 lutris
 ly
 mailsend-go
@@ -228,6 +233,7 @@ microsocks
 mihomo
 milou
 mpd
+mpdris2
 mplayer
 mpv
 neovide
@@ -258,6 +264,7 @@ openrazer-daemon
 oxygen
 oxygen-cursors
 oxygen-sounds
+pandoc-cli
 papers
 papirus-icon-theme
 paru
@@ -298,6 +305,7 @@ print-manager
 pwvucontrol
 python-babel
 python-i3ipc
+python-mutagen
 python-openrazer
 python-pip
 python-pipx
@@ -343,7 +351,6 @@ tcsh
 tecla
 telegram-cli-git
 telegram-desktop
-termusic
 tesseract-data-eng
 throne-bin
 timr
