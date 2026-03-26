@@ -1,3 +1,5 @@
+adw-gtk-theme
+aether
 an-anime-game-launcher-bin
 android-emulator
 android-sdk-platform-tools
@@ -6,11 +8,12 @@ angband
 arc-solid-gtk-theme
 aurorae
 awesome-terminal-fonts
-ayugram-desktop-bin
+awww
 baobab
 base
 base-devel
 bat
+bibata-cursor-theme-bin
 bind
 blackarch-mirrorlist
 blender
@@ -34,6 +37,7 @@ clock-tui
 cloudflared
 cmatrix
 cmus
+commet-bin
 cool-retro-term
 cowsay
 cull-bin
@@ -57,6 +61,7 @@ emptty
 eog
 epiphany
 espeak-ng
+evercal
 eww
 ex-vi-compat
 expac
@@ -131,6 +136,7 @@ gtk-theme-elementary
 gtk-theme-material-black
 gtk3
 gtklock
+gum
 gvfs-afc
 gvfs-dnssd
 gvfs-goa
@@ -145,6 +151,7 @@ hdparm
 helix
 helm-bin
 helvum
+hostapd
 hylauncher-bin
 hyprland
 hyprlock
@@ -152,6 +159,7 @@ hyprpicker
 hyprpwcenter
 hyprshot
 hyprwave
+hyprwhspr
 hytale-f2p-git
 i2pd
 i3-wm
@@ -161,6 +169,8 @@ i3status
 imv
 inkscape
 ithil-bin
+iw
+iwd
 jdk-openjdk
 kactivitymanagerd
 kalidoface-bin
@@ -202,8 +212,10 @@ links
 linux
 linux-firmware
 linux-headers
+linux-wifi-hotspot
 lla
 lmms
+lolcat
 loupe
 lsd
 lshw
@@ -297,6 +309,7 @@ plymouth-kcm
 polkit-gnome
 polkit-kde-agent
 pomo-bin
+ponysay
 portproton
 postgresql
 power-profiles-daemon
@@ -327,6 +340,7 @@ showmethekey
 showtime
 sillytavern-git
 simple-scan
+simplex-chat-bin
 sing-box
 sioyek
 snapshot
@@ -341,7 +355,6 @@ sushi
 swaybg
 swaync
 swayosd
-swww
 syncthing
 systemctl-tui
 systemsettings
@@ -354,6 +367,7 @@ telegram-desktop
 tesseract-data-eng
 throne-bin
 timr
+tmux
 tofi
 tor
 torbrowser-launcher
@@ -362,6 +376,7 @@ ttf-iosevka-nerd
 ttf-iosevkaterm-nerd
 ttf-quicksand-variable
 tuios-bin
+tuxsay
 typst
 udiskie
 ufw
@@ -377,7 +392,6 @@ vulkan-validation-layers
 wacomtablet
 walker
 waybar
-waydroid
 wayland-utils
 wayvnc
 weechat
@@ -388,7 +402,6 @@ wine-staging
 winetricks
 wireshark-cli
 wl-clipboard
-xdg-desktop-portal-kde
 xdotool
 xf86-video-vesa
 xorg-bdftopcf
